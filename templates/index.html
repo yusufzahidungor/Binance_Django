@@ -1,0 +1,535 @@
+{% extends 'layout.html' %}
+
+{% block head %}    
+{% endblock head %}
+
+{% block body %}
+
+<div class="sales-report-area mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="single-report mb-xs-30">
+                <div class="s-report-inner pr--20 pt--30 mb-3">
+                    <a  href="http://127.0.0.1:8000/user/BTC_BUSD/" role="button">
+                        <span id="span_BTC" class="badge badge-secondary">
+                            <div class="s-report-title d-flex justify-content-between">
+                                <h4 class="header-title mb-0">BTC</h4>
+                                <p>24 H</p>
+                            </div>
+                            <div class="d-flex justify-content-between pb-2">
+                                <h2>$</h2>
+                                <h2 id="BTC_trades">-----------</h2>                       
+                                <span id="BTC_percent">---</span>
+                            </div>
+                        </span> 
+                    </a>                    
+                </div>
+                <!-- <canvas id="coin_sales1" height="100"></canvas> -->
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="single-report mb-xs-30">
+                <div class="s-report-inner pr--20 pt--30 mb-3">
+                    <a href="#" role="button">
+                        <span id="span_ETH" class="badge badge-secondary">
+                            <div class="s-report-title d-flex justify-content-between">
+                                <h4 class="header-title mb-0">ETH</h4>
+                                <p>24 H</p>
+                            </div>
+                            <div class="d-flex justify-content-between pb-2">
+                                <h2>$</h2>
+                                <h2 id="ETH_trades">-----------</h2>                       
+                                <span id="ETH_percent">---</span>
+                            </div>
+                        </span> 
+                    </a>                    
+                </div>
+                <!-- <canvas id="coin_sales2" height="100"></canvas> -->
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="single-report">
+                <div class="s-report-inner pr--20 pt--30 mb-3">
+                    <a href="#" role="button">
+                        <span id="span_BNB" class="badge badge-secondary">
+                            <div class="s-report-title d-flex justify-content-between">
+                                <h4 class="header-title mb-0">BNB</h4>
+                                <p>24 H</p>
+                            </div>
+                            <div class="d-flex justify-content-between pb-2">
+                                <h2>$</h2>
+                                <h2 id="BNB_trades">-----------</h2>                       
+                                <span id="BNB_percent">---</span>
+                            </div>
+                        </span> 
+                    </a>                    
+                </div>
+                <!-- <canvas id="coin_sales3" height="100"></canvas> -->
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<!-- $container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px
+); -->
+
+<!-- // Source mixin
+@mixin make-container($padding-x: $container-padding-x) {
+  width: 100%;
+  padding-right: $padding-x;
+  padding-left: $padding-x;
+  margin-right: auto;
+  margin-left: auto;
+} -->
+
+<div class="container">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Fiyat</th>
+        <th scope="col">Yüksek</th>
+        <th scope="col">Düşük</th>
+        <th scope="col">Hacim</th>
+        <th scope="col">Yüzde</th>
+        <th scope="col">Deneme</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="tr_BTC">
+        <th scope="row">BTC</th>
+        <td><h6 id="BTC_trades_table">---</h6></td>
+        <td><h6 id="BTC_trades_high">---</h6></td>
+        <td><h6 id="BTC_trades_low">---</h6></td>
+        <td><h6 id="BTC_trades_quality">---</h6></td>
+        <td><span id="BTC_trades_percent" class="badge badge-secondary"></span></td>
+        <td>
+            <a class="btn btn-primary" href="http://127.0.0.1:8000/user/BTC_BUSD/" role="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                    <path d="M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+                </svg>
+            </a>
+        </td>
+      </tr>
+      <tr id="tr_ETH">
+        <th scope="row">ETH</th>
+        <td><h6 id="ETH_trades_table">---</h6></td>
+        <td><h6 id="ETH_trades_high">---</h6></td>
+        <td><h6 id="ETH_trades_low">---</h6></td>
+        <td><h6 id="ETH_trades_quality">---</h6></td>
+        <td><span id="ETH_trades_percent" class="badge badge-secondary"></span></td>
+        <td>
+            <a class="btn btn-primary" href="#" role="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                    <path d="M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+                </svg>
+            </a>
+        </td>
+      </tr>
+      <tr id="tr_BNB">
+        <th scope="row">BNB</th>
+        <td><h6 id="BNB_trades_table">---</h6></td>
+        <td><h6 id="BNB_trades_high">---</h6></td>
+        <td><h6 id="BNB_trades_low">---</h6></td>
+        <td><h6 id="BNB_trades_quality">---</h6></td>
+        <td><span id="BNB_trades_percent" class="badge badge-secondary"></span></td>
+        <td>
+            <a class="btn btn-primary" href="#" role="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                    <path d="M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+                </svg>
+            </a>
+        </td>
+      </tr>
+      <tr id="tr_DOT">
+        <th scope="row">DOT</th>
+        <td><h6 id="DOT_trades_table">---</h6></td>
+        <td><h6 id="DOT_trades_high">---</h6></td>
+        <td><h6 id="DOT_trades_low">---</h6></td>
+        <td><h6 id="DOT_trades_quality">---</h6></td>
+        <td><span id="DOT_trades_percent" class="badge badge-secondary"></span></td>
+        <td>
+            <a class="btn btn-primary" href="#" role="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                    <path d="M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+                </svg>
+            </a>
+        </td>
+      </tr>
+      <tr id="tr_ADA">
+        <th scope="row">ADA</th>
+        <td><h6 id="ADA_trades_table">---</h6></td>
+        <td><h6 id="ADA_trades_high">---</h6></td>
+        <td><h6 id="ADA_trades_low">---</h6></td>
+        <td><h6 id="ADA_trades_quality">---</h6></td>
+        <td><span id="ADA_trades_percent" class="badge badge-secondary"></span></td>
+        <td>
+            <a class="btn btn-primary" href="#" role="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                    <path d="M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+                </svg>
+            </a>
+        </td>
+      </tr>
+      <tr id="tr_XRP">
+        <th scope="row">XRP</th>
+        <td><h6 id="XRP_trades_table">---</h6></td>
+        <td><h6 id="XRP_trades_high">---</h6></td>
+        <td><h6 id="XRP_trades_low">---</h6></td>
+        <td><h6 id="XRP_trades_quality">---</h6></td>
+        <td><span id="XRP_trades_percent" class="badge badge-secondary"></span></td>
+        <td>
+            <a class="btn btn-primary" href="#" role="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                    <path d="M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+                </svg>
+            </a>
+        </td>
+      </tr>
+      <tr id="tr_LTC">
+        <th scope="row">LTC</th>
+        <td><h6 id="LTC_trades_table">---</h6></td>
+        <td><h6 id="LTC_trades_high">---</h6></td>
+        <td><h6 id="LTC_trades_low">---</h6></td>
+        <td><h6 id="LTC_trades_quality">---</h6></td>
+        <td><span id="LTC_trades_percent" class="badge badge-secondary"></span></td>
+        <td>
+            <a class="btn btn-primary" href="#" role="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                    <path d="M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+                </svg>
+            </a>
+        </td>
+      </tr>
+      <tr id="tr_XLM">
+        <th scope="row">XLM</th>
+        <td><h6 id="XLM_trades_table">---</h6></td>
+        <td><h6 id="XLM_trades_high">---</h6></td>
+        <td><h6 id="XLM_trades_low">---</h6></td>
+        <td><h6 id="XLM_trades_quality">---</h6></td>
+        <td><span id="XLM_trades_percent" class="badge badge-secondary"></span></td>
+        <td>
+            <a class="btn btn-primary" href="#" role="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                    <path d="M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+                </svg>
+            </a>
+        </td>
+      </tr>
+      <tr id="tr_ATOM">
+        <th scope="row">ATOM</th>
+        <td><h6 id="ATOM_trades_table">---</h6></td>
+        <td><h6 id="ATOM_trades_high">---</h6></td>
+        <td><h6 id="ATOM_trades_low">---</h6></td>
+        <td><h6 id="ATOM_trades_quality">---</h6></td>
+        <td><span id="ATOM_trades_percent" class="badge badge-secondary"></span></td>
+        <td>
+            <a class="btn btn-primary" href="#" role="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                    <path d="M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+                </svg>
+            </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+
+<!-- BTC Trader -->
+<script>
+    var binanceSocket = new WebSocket('wss://stream.binance.com:9443/ws/btcusdt@ticker');
+    var tradeDiv = document.getElementById('BTC_trades')
+    
+    binanceSocket.onmessage = function(event){
+        //console.log(event.data);
+        var messageObject =JSON.parse(event.data);
+
+        document.querySelector('#BTC_trades').innerText = messageObject.c;
+        document.querySelector('#BTC_trades_table').innerText = messageObject.c;
+        document.querySelector('#BTC_trades_high').innerText = messageObject.h;
+        document.querySelector('#BTC_trades_low').innerText = messageObject.l;
+        document.querySelector('#BTC_trades_quality').innerText = messageObject.q;
+        document.querySelector('#BTC_trades_percent').innerText = messageObject.P;
+        document.getElementById('BTC_percent').innerText = messageObject.P;
+
+        if(messageObject.P < 0){
+            document.getElementById('BTC_trades_percent').className = 'badge badge-danger'
+            document.getElementById('span_BTC').className = 'badge badge-danger'
+            document.getElementById('tr_BTC').className = 'table-danger'
+        }
+        else if(messageObject.P > 0){
+            document.getElementById('BTC_trades_percent').className = 'badge badge-success'
+            document.getElementById('span_BTC').className = 'badge badge-success'
+            document.getElementById('tr_BTC').className = 'table-success'
+        }
+        else{
+            document.getElementById('BTC_trades_percent').className = 'badge badge-secondary'
+            document.getElementById('span_BTC').className = 'badge badge-secondary'
+            document.getElementById('tr_BTC').className = 'table-secondary'
+            
+        }       
+        
+    }    
+</script>
+
+<!-- ETH Trader -->
+<script>
+    var binanceSocket = new WebSocket('wss://stream.binance.com:9443/ws/ethusdt@ticker');
+    var tradeDiv = document.getElementById('ETH_trades')
+    
+    binanceSocket.onmessage = function(event){
+        //console.log(event.data);
+        var messageObject =JSON.parse(event.data);
+
+        document.querySelector('#ETH_trades').innerText = messageObject.c;
+        document.querySelector('#ETH_trades_table').innerText = messageObject.c;
+        document.querySelector('#ETH_trades_high').innerText = messageObject.h;
+        document.querySelector('#ETH_trades_low').innerText = messageObject.l;
+        document.querySelector('#ETH_trades_quality').innerText = messageObject.q;
+        document.querySelector('#ETH_trades_percent').innerText = messageObject.P;
+        document.getElementById('ETH_percent').innerText = messageObject.P;
+
+        if(messageObject.P < 0){
+            document.getElementById('ETH_trades_percent').className = 'badge badge-danger'
+            document.getElementById('span_ETH').className = 'badge badge-danger'
+            document.getElementById('tr_ETH').className = 'table-danger'
+        }
+        else if(messageObject.P > 0){
+            document.getElementById('ETH_trades_percent').className = 'badge badge-success'
+            document.getElementById('span_ETH').className = 'badge badge-success'
+            document.getElementById('tr_ETH').className = 'table-success'
+        }
+        else{
+            document.getElementById('ETH_trades_percent').className = 'badge badge-secondary'
+            document.getElementById('span_ETH').className = 'badge badge-secondary'
+            document.getElementById('tr_ETH').className = 'table-secondary'
+        }
+    }    
+</script>
+
+<!-- BNB Trader -->
+<script>
+    var binanceSocket = new WebSocket('wss://stream.binance.com:9443/ws/bnbusdt@ticker');
+    //var tradeDiv = document.getElementById('BNB_trades')
+    
+    binanceSocket.onmessage = function(event){
+        //console.log(event.data);
+        var messageObject =JSON.parse(event.data);
+
+        document.querySelector('#BNB_trades').innerText = messageObject.c;
+        document.querySelector('#BNB_trades_table').innerText = messageObject.c;
+        document.querySelector('#BNB_trades_high').innerText = messageObject.h;
+        document.querySelector('#BNB_trades_low').innerText = messageObject.l;
+        document.querySelector('#BNB_trades_quality').innerText = messageObject.q;
+        document.querySelector('#BNB_trades_percent').innerText = messageObject.P;
+        document.getElementById('BNB_percent').innerText = messageObject.P;
+
+        if(messageObject.P < 0){
+            document.getElementById('BNB_trades_percent').className = 'badge badge-danger'
+            document.getElementById('span_BNB').className = 'badge badge-danger'
+            document.getElementById('tr_BNB').className = 'table-danger'
+        }
+        else if(messageObject.P > 0){
+            document.getElementById('BNB_trades_percent').className = 'badge badge-success'
+            document.getElementById('span_BNB').className = 'badge badge-success'
+            document.getElementById('tr_BNB').className = 'table-success'
+        }
+        else{
+            document.getElementById('BNB_trades_percent').className = 'badge badge-secondary'
+            document.getElementById('span_BNB').className = 'badge badge-secondary'
+            document.getElementById('tr_BNB').className = 'table-secondary'
+        }
+    }    
+</script>
+
+<!-- DOT Trader -->
+<script>
+    var binanceSocket = new WebSocket('wss://stream.binance.com:9443/ws/dotusdt@ticker');
+    
+    binanceSocket.onmessage = function(event){
+        //console.log(event.data);
+        var messageObject =JSON.parse(event.data);
+
+        document.querySelector('#DOT_trades_table').innerText = messageObject.c;
+        document.querySelector('#DOT_trades_high').innerText = messageObject.h;
+        document.querySelector('#DOT_trades_low').innerText = messageObject.l;
+        document.querySelector('#DOT_trades_quality').innerText = messageObject.q;
+        document.querySelector('#DOT_trades_percent').innerText = messageObject.P;
+
+        if(messageObject.P < 0){
+            document.getElementById('DOT_trades_percent').className = 'badge badge-danger'
+            document.getElementById('tr_DOT').className = 'table-danger'
+        }
+        else if(messageObject.P > 0){
+            document.getElementById('DOT_trades_percent').className = 'badge badge-success'
+            document.getElementById('tr_DOT').className = 'table-success'
+        }
+        else{
+            document.getElementById('DOT_trades_percent').className = 'badge badge-secondary'
+            document.getElementById('tr_DOT').className = 'table-secondary'
+        }
+    }    
+</script>
+
+<!-- ADA Trader -->
+<script>
+    var binanceSocket = new WebSocket('wss://stream.binance.com:9443/ws/adausdt@ticker');
+    
+    binanceSocket.onmessage = function(event){
+        //console.log(event.data);
+        var messageObject =JSON.parse(event.data);
+
+        document.querySelector('#ADA_trades_table').innerText = messageObject.c;
+        document.querySelector('#ADA_trades_high').innerText = messageObject.h;
+        document.querySelector('#ADA_trades_low').innerText = messageObject.l;
+        document.querySelector('#ADA_trades_quality').innerText = messageObject.q;
+        document.querySelector('#ADA_trades_percent').innerText = messageObject.P;
+
+        if(messageObject.P < 0){
+            document.getElementById('ADA_trades_percent').className = 'badge badge-danger'
+            document.getElementById('tr_ADA').className = 'table-danger'
+        }
+        else if(messageObject.P > 0){
+            document.getElementById('ADA_trades_percent').className = 'badge badge-success'
+            document.getElementById('tr_ADA').className = 'table-success'
+        }
+        else{
+            document.getElementById('ADA_trades_percent').className = 'badge badge-secondary'
+            document.getElementById('tr_ADA').className = 'table-secondary'
+        }
+    }    
+</script>
+
+<!-- XRP Trader -->
+<script>
+    var binanceSocket = new WebSocket('wss://stream.binance.com:9443/ws/xrpusdt@ticker');
+    
+    binanceSocket.onmessage = function(event){
+        //console.log(event.data);
+        var messageObject =JSON.parse(event.data);
+
+        document.querySelector('#XRP_trades_table').innerText = messageObject.c;
+        document.querySelector('#XRP_trades_high').innerText = messageObject.h;
+        document.querySelector('#XRP_trades_low').innerText = messageObject.l;
+        document.querySelector('#XRP_trades_quality').innerText = messageObject.q;
+        document.querySelector('#XRP_trades_percent').innerText = messageObject.P;
+
+        if(messageObject.P < 0){
+            document.getElementById('XRP_trades_percent').className = 'badge badge-danger'
+            document.getElementById('tr_XRP').className = 'table-danger'
+        }
+        else if(messageObject.P > 0){
+            document.getElementById('XRP_trades_percent').className = 'badge badge-success'
+            document.getElementById('tr_XRP').className = 'table-success'
+        }
+        else{
+            document.getElementById('XRP_trades_percent').className = 'badge badge-secondary'
+            document.getElementById('tr_XRP').className = 'table-secondary'
+        }
+    }    
+</script>
+
+<!-- LTC Trader -->
+<script>
+    var binanceSocket = new WebSocket('wss://stream.binance.com:9443/ws/ltcusdt@ticker');
+    
+    binanceSocket.onmessage = function(event){
+        //console.log(event.data);
+        var messageObject =JSON.parse(event.data);
+
+        document.querySelector('#LTC_trades_table').innerText = messageObject.c;
+        document.querySelector('#LTC_trades_high').innerText = messageObject.h;
+        document.querySelector('#LTC_trades_low').innerText = messageObject.l;
+        document.querySelector('#LTC_trades_quality').innerText = messageObject.q;
+        document.querySelector('#LTC_trades_percent').innerText = messageObject.P;
+
+        if(messageObject.P < 0){
+            document.getElementById('LTC_trades_percent').className = 'badge badge-danger'
+            document.getElementById('tr_LTC').className = 'table-danger'
+        }
+        else if(messageObject.P > 0){
+            document.getElementById('LTC_trades_percent').className = 'badge badge-success'
+            document.getElementById('tr_LTC').className = 'table-success'
+        }
+        else{
+            document.getElementById('LTC_trades_percent').className = 'badge badge-secondary'
+            document.getElementById('tr_LTC').className = 'table-secondary'
+        }
+    }    
+</script>
+
+<!-- XLM Trader -->
+<script>
+    var binanceSocket = new WebSocket('wss://stream.binance.com:9443/ws/xlmusdt@ticker');
+    
+    binanceSocket.onmessage = function(event){
+        //console.log(event.data);
+        var messageObject =JSON.parse(event.data);
+
+        document.querySelector('#XLM_trades_table').innerText = messageObject.c;
+        document.querySelector('#XLM_trades_high').innerText = messageObject.h;
+        document.querySelector('#XLM_trades_low').innerText = messageObject.l;
+        document.querySelector('#XLM_trades_quality').innerText = messageObject.q;
+        document.querySelector('#XLM_trades_percent').innerText = messageObject.P;
+
+        if(messageObject.P < 0){
+            document.getElementById('XLM_trades_percent').className = 'badge badge-danger'
+            document.getElementById('tr_XLM').className = 'table-danger'
+        }
+        else if(messageObject.P > 0){
+            document.getElementById('XLM_trades_percent').className = 'badge badge-success'
+            document.getElementById('tr_XLM').className = 'table-success'
+        }
+        else{
+            document.getElementById('XLM_trades_percent').className = 'badge badge-secondary'
+            document.getElementById('tr_XLM').className = 'table-secondary'
+        }
+    }    
+</script>
+
+<!-- ATOM Trader -->
+<script>
+    var binanceSocket = new WebSocket('wss://stream.binance.com:9443/ws/atomusdt@ticker');
+    
+    binanceSocket.onmessage = function(event){
+        //console.log(event.data);
+        var messageObject =JSON.parse(event.data);
+
+        document.querySelector('#ATOM_trades_table').innerText = messageObject.c;
+        document.querySelector('#ATOM_trades_high').innerText = messageObject.h;
+        document.querySelector('#ATOM_trades_low').innerText = messageObject.l;
+        document.querySelector('#ATOM_trades_quality').innerText = messageObject.q;
+        document.querySelector('#ATOM_trades_percent').innerText = messageObject.P;
+
+        if(messageObject.P < 0){
+            document.getElementById('ATOM_trades_percent').className = 'badge badge-danger'
+            document.getElementById('tr_ATOM').className = 'table-danger'
+        }
+        else if(messageObject.P > 0){
+            document.getElementById('ATOM_trades_percent').className = 'badge badge-success'
+            document.getElementById('tr_ATOM').className = 'table-success'
+        }
+        else{
+            document.getElementById('ATOM_trades_percent').className = 'badge badge-secondary'
+            document.getElementById('tr_ATOM').className = 'table-secondary'
+        }
+    }    
+</script>
+
+{% for todo in todos %}
+    <h1>{{todo.id}}</h1>
+{% endfor %}
+
+{% endblock body %}

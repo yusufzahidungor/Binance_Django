@@ -1,0 +1,296 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+  <div class="container">
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Fiyat</th>
+          <th scope="col">Yüksek</th>
+          <th scope="col">Düşük</th>
+          <th scope="col">Hacim</th>
+          <th scope="col">Fiyat Değişikliği</th>
+          <th scope="col">Yüzde</th>          
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="tr_BTC" class="bg_danger">
+          <th scope="row" id="BTC_seymbol">---</th>
+          <td id="BTC_trades_table">---</td>
+          <td id="BTC_trades_high">---</td>
+          <td id="BTC_trades_low">---</td>
+          <td id="BTC_trades_quality">---</td>
+          <td id="BTC_trades_change_percent">---</td>
+          <td id="BTC_trades_percent">---</td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+
+  
+
+
+  <!-- <div class="container-fluid">
+    <table class="table table-striped table-dark">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Handle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Larry</td>
+          <td>the Bird</td>
+          <td>@twitter</td>
+        </tr>
+      </tbody>
+    </table>
+  </div> -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h5>Haraketli Ortalama</h5>
+        <table class="table table-striped table-dark">
+          <thead>
+            <tr>
+              <th scope="col">Ad</th>
+              <th scope="col">Değer</th>
+              <th scope="col">İşlem</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">EMA10</th>
+              <td>---</td>
+              <td>---</td>
+            </tr>
+            <tr>
+              <th scope="row">MA10</th>
+              <td>---</td>
+              <td>---</td>
+            </tr>
+            <tr>
+              <th scope="row">EMA20</th>
+              <td>---</td>
+              <td>---</td>
+            </tr>
+            <tr>
+              <th scope="row">MA20</th>
+              <td>---</td>
+              <td>---</td>
+            </tr>
+            <tr>
+              <th scope="row">EMA30</th>
+              <td>---</td>
+              <td>---</td>
+            </tr>
+            <tr>
+              <th scope="row">MA30</th>
+              <td>---</td>
+              <td>---</td>
+            </tr>
+            <tr>
+              <th scope="row">EMA50</th>
+              <td>---</td>
+              <td>---</td>
+            </tr>
+            <tr>
+              <th scope="row">MA50</th>
+              <td>---</td>
+              <td>---</td>
+            </tr>
+            <tr>
+              <th scope="row">EMA100</th>
+              <td>---</td>
+              <td>---</td>
+            </tr>
+            <tr>
+              <th scope="row">MA100</th>
+              <td>---</td>
+              <td>---</td>
+            </tr>
+            <tr>
+              <th scope="row">EMA200</th>
+              <td>---</td>
+              <td>---</td>
+            </tr>
+            <tr>
+              <th scope="row">MA200</th>
+              <td>---</td>
+              <td>---</td>
+            </tr>
+            <tr>
+              <th scope="row">SAR(0.2)</th>
+              <td>---</td>
+              <td>---</td>
+            </tr>
+            <tr>
+              <th scope="row">MA10</th>
+              <td>---</td>
+              <td>---</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col">
+        <h5>Osilatörler</h5>
+        <table class="table table-striped table-dark">
+          <thead>
+            <tr>
+              <th scope="col">Ad</th>
+              <th scope="col">Değer</th>
+              <th scope="col">İşlem</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">RSI14</th>
+              <td>---</td>
+              <td>---</td>
+            </tr>
+            <tr>
+              <th scope="row">RSI30</th>
+              <td>---</td>
+              <td>---</td>
+            </tr>
+            <tr>
+              <th scope="row">RSI50</th>
+              <td>---</td>
+              <td>---</td>
+            </tr>
+            <tr>
+              <th scope="row">Stokastik %K (14,3,3)</th>
+              <td>---</td>
+              <td>---</td>
+            </tr>
+            <tr>
+              <th scope="row">CCI(20)</th>
+              <td>---</td>
+              <td>---</td>
+            </tr>
+            <tr>
+              <th scope="row">ADX(14)</th>
+              <td>---</td>
+              <td>---</td>
+            </tr>
+            <tr>
+              <th scope="row">AO</th>
+              <td>---</td>
+              <td>---</td>
+            </tr>
+            <tr>
+              <th scope="row">Momentum</th>
+              <td>---</td>
+              <td>---</td>
+            </tr>
+            <tr>
+              <th scope="row">MACD(12,26)</th>
+              <td>---</td>
+              <td>---</td>
+            </tr>
+            <tr>
+              <th scope="row">Stok. RSI Hızlı(3,3,14,14)</th>
+              <td>---</td>
+              <td>---</td>
+            </tr>
+            <tr>
+              <th scope="row">WILLR</th>
+              <td>---</td>
+              <td>---</td>
+            </tr>
+            
+            
+          </tbody>
+        </table>
+      </div>
+      <div class="col">
+        <h5>ddf</h5>
+        <table class="table table-striped table-dark">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">First</th>
+              <th scope="col">Last</th>
+              <th scope="col">Handle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>    
+  </div>
+
+  <script>
+    var binanceSocket = new WebSocket('wss://stream.binance.com:9443/ws/btcusdt@ticker');
+    
+    binanceSocket.onmessage = function(event){
+        console.log(event.data);
+        var messageObject =JSON.parse(event.data);
+
+        document.querySelector('#BTC_seymbol').innerText = messageObject.s;
+        document.querySelector('#BTC_trades_table').innerText = messageObject.c;
+        document.querySelector('#BTC_trades_high').innerText = messageObject.h;
+        document.querySelector('#BTC_trades_low').innerText = messageObject.l;
+        document.querySelector('#BTC_trades_quality').innerText = messageObject.q;
+        document.querySelector('#BTC_trades_change_percent').innerText = messageObject.p;
+        document.querySelector('#BTC_trades_percent').innerText = messageObject.P;
+
+        if(messageObject.P < 0){
+            document.getElementById('tr_BTC').className = 'bg-danger'
+            document.getElementById('layout_body').style = 'background-color:#ff9292;'
+            // document.getElementById('layout_body').style = 'background-color:blue;'
+
+        }
+        else if(messageObject.P > 0){
+            document.getElementById('tr_BTC').className = 'bg-success'
+            //document.getElementById('layout_body').style = 'background-color:red;'
+            document.getElementById('layout_body').style = 'background-color:#d2fdc5;'
+        }
+        else{
+            document.getElementById('tr_BTC').className = 'bg-secondary'
+            document.getElementById('layout_body').style = 'background-color:#e2e1e0;'            
+        }       
+        
+    }    
+</script>
+
+{% endblock body %}
